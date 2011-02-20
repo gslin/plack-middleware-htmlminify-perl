@@ -9,12 +9,6 @@ use warnings;
 
 Plack::Middleware::HTMLMinify
 
-=head1 VERSION
-Version 0.1
-=cut
-
-our $VERSION = '0.1';
-
 =head1 DESCRIPTION
 
 This module will use L<HTML::Packer> to minify HTML code on-the-fly
