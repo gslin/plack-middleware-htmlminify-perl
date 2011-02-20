@@ -56,6 +56,14 @@ sub prepare_app {
 
 Gea-Suan Lin, C<< <gslin at gslin.org> >>
 
+=head1 LICENSE AND COPYRIGHT
+
+Copyright 2011 Gea-Suan Lin.
+
+This software is released under 3-clause BSD license. See
+L<http://www.opensource.org/licenses/bsd-license.php> for more
+information.
+
 =cut
 
 1;
