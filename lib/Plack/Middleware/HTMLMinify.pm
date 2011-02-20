@@ -38,7 +38,12 @@ sub call {
 	my $res = shift;
 
 	my $h = Plack::Util::headers($res->[1]);
+
+	# Only process text/html.
 	return unless $h->get('Content-Type') =~ qr{text/html};
+
+	# Don't touch compressed content.
+	return if defined $h->get('Content-Encoding');
 
 	$self->packer->minify(\$res->[2][0], $self->opt);
 	return;
