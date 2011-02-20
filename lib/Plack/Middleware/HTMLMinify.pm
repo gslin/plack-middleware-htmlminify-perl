@@ -7,7 +7,7 @@ use warnings;
 
 =head1 NAME
 
-Plack::Middleware::HTMLMinify
+Plack::Middleware::HTMLMinify - Plack middleware for HTML minify
 
 =head1 DESCRIPTION
 
