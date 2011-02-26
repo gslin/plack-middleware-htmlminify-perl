@@ -1,3 +1,6 @@
+0.3	Feb 26, 2012
+	- If response body is undefined, then don't touch it.
+
 0.2	Feb 20, 2012
 	- If Content-Encoding is set, don't minify it.
 
