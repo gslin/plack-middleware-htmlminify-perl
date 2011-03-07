@@ -1,3 +1,6 @@
+0.4	Mar 7, 2012
+	- Support multiple part in response.
+
 0.3	Feb 26, 2012
 	- If response body is undefined, then don't touch it.
 
