@@ -45,10 +45,14 @@ sub call {
 	# Don't touch compressed content.
 	return if defined $h->get('Content-Encoding');
 
-	# If response body is undefined then ignore it.
-	return if !defined $res->[2][0];
+	# Concat all content, and if response body is undefined then ignore it.
+	my $body = join '', @{$res->[2]};
+	return if '' eq $body;
 
-	$self->packer->minify(\$res->[2][0], $self->opt);
+	# Minify and replace it.
+	$self->packer->minify(\$body, $self->opt);
+	$res->[2] = [$body];
+
 	return;
     });
 }
