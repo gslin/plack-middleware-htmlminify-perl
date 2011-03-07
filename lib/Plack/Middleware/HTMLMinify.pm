@@ -52,6 +52,7 @@ sub call {
 	# Minify and replace it.
 	$self->packer->minify(\$body, $self->opt);
 	$res->[2] = [$body];
+	$h->set('Content-Length', length $body);
 
 	return;
     });
