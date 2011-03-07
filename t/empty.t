@@ -20,9 +20,6 @@ $app = builder {
 test_psgi $app, sub {
     my $cb = shift;
 
-    my $req = GET '/';
-    $req->header('Accept-Encoding', 'gzip');
-
     my $res = $cb->(GET '/');
     is $res->code, 200;
     is $res->content, '';
