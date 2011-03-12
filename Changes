@@ -1,11 +1,14 @@
-0.4	Mar 7, 2012
+0.5	March 13, 2012
+	- Support IO::Handle-like object as $res->[2].
+
+0.4	March 7, 2012
 	- Support multiple part in response.
 
-0.3	Feb 26, 2012
+0.3	February 26, 2012
 	- If response body is undefined, then don't touch it.
 
-0.2	Feb 20, 2012
+0.2	February 20, 2012
 	- If Content-Encoding is set, don't minify it.
 
-0.1	Feb 20, 2012
+0.1	February 20, 2012
 	- Initial release.
