@@ -46,7 +46,10 @@ sub call {
 	return if defined $h->get('Content-Encoding');
 
 	# Concat all content, and if response body is undefined then ignore it.
-	my $body = join '', @{$res->[2]};
+	my $body = [];
+	Plack::Util::foreach($res->[2], sub { push @$body, $_[0]; });
+	$body = join '', @$body;
+
 	return if '' eq $body;
 
 	# Minify and replace it.
