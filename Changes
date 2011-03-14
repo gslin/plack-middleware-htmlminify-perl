@@ -1,3 +1,6 @@
+0.5.1	March 14, 2012
+	- Fix use of uninitialized message warning.
+
 0.5	March 13, 2012
 	- Support IO::Handle-like object as $res->[2].
 
