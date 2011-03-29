@@ -41,8 +41,7 @@ sub call {
 
         # Only process text/html.
         my $ct = $h->get('Content-Type');
-        return unless defined $ct;
-        return unless $ct =~ qr{text/html};
+        return unless defined $ct and $ct =~ qr{text/html};
 
         # Don't touch compressed content.
         return if defined $h->get('Content-Encoding');
