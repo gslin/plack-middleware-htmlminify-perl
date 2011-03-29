@@ -52,10 +52,8 @@ sub call {
         Plack::Util::foreach($res->[2], sub { push @$body, $_[0]; });
         $body = join '', @$body;
 
-        return if '' eq $body;
-
         # Minify and replace it.
-        $self->packer->minify(\$body, $self->opt);
+        $self->packer->minify(\$body, $self->opt) if '' ne $body;
         $res->[2] = [$body];
         $h->set('Content-Length', length $body);
 
