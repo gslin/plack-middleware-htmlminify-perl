@@ -18,7 +18,7 @@ automatically.  Currently it will check if Content-Type is C<text/html>.
 
     use Plack::Builder;
     builder {
-	enable 'HTMLMinify', opt => {remove_newlines => 1};
+        enable 'HTMLMinify', opt => {remove_newlines => 1};
     }
 
 =cut
@@ -35,31 +35,31 @@ sub call {
 
     my $res = $self->app->($env);
     Plack::Util::response_cb($res, sub {
-	my $res = shift;
+        my $res = shift;
 
-	my $h = Plack::Util::headers($res->[1]);
+        my $h = Plack::Util::headers($res->[1]);
 
-	# Only process text/html.
-	my $ct = $h->get('Content-Type');
-	return unless defined $ct;
-	return unless $ct =~ qr{text/html};
+        # Only process text/html.
+        my $ct = $h->get('Content-Type');
+        return unless defined $ct;
+        return unless $ct =~ qr{text/html};
 
-	# Don't touch compressed content.
-	return if defined $h->get('Content-Encoding');
+        # Don't touch compressed content.
+        return if defined $h->get('Content-Encoding');
 
-	# Concat all content, and if response body is undefined then ignore it.
-	my $body = [];
-	Plack::Util::foreach($res->[2], sub { push @$body, $_[0]; });
-	$body = join '', @$body;
+        # Concat all content, and if response body is undefined then ignore it.
+        my $body = [];
+        Plack::Util::foreach($res->[2], sub { push @$body, $_[0]; });
+        $body = join '', @$body;
 
-	return if '' eq $body;
+        return if '' eq $body;
 
-	# Minify and replace it.
-	$self->packer->minify(\$body, $self->opt);
-	$res->[2] = [$body];
-	$h->set('Content-Length', length $body);
+        # Minify and replace it.
+        $self->packer->minify(\$body, $self->opt);
+        $res->[2] = [$body];
+        $h->set('Content-Length', length $body);
 
-	return;
+        return;
     });
 }
 
