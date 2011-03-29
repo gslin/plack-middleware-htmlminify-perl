@@ -1,3 +1,6 @@
+1.0.0   March 29, 2011
+        - Fix a possible bug when body is empty.
+
 0.6.0   March 14, 2011
         - Bump version.
 
